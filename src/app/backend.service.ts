@@ -9,6 +9,8 @@ export  class BackendService {
 
   newsId;
   blogId;
+  success;
+
   constructor(private http: Http) {
   }
 
@@ -80,6 +82,8 @@ const sdata = {
 }
 
 return this.http.post(url, sdata,options).toPromise().then(response => {
+    this.blogId= response.json().response._id;
+    this.success=true;
   return response.json();
 });
 }
@@ -102,11 +106,12 @@ return this.http.post(url, sdata,options).toPromise().then(response => {
   console.log(response.json());
   this.newsId= response.json().response._id;
     console.log(this.newsId);
-
+this.success=true;
   return response.json();
 });
 }
 sendFileArticle(id: string, files : File[]): void {
+  console.log("here posting");
     const url = `api/img_upload/Blog/`+id;
     const hh = new Headers();
     hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
@@ -120,6 +125,7 @@ sendFileArticle(id: string, files : File[]): void {
            formData.append('file', file, file.name);
 
       }
+        console.log("here posting");
     this.http.post(url, formData, options).subscribe();
   }
   sendFileNews(id: string, files : File[]): void {
@@ -139,6 +145,7 @@ sendFileArticle(id: string, files : File[]): void {
       this.http.post(url, formData, options).toPromise().then(
         response=>{
           console.log(response.json());
+
         }
       );
     }

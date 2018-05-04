@@ -13,7 +13,7 @@ export const ROUTES: RouteInfo[] = [
     { path: '/redirects', title: 'Redirects',  icon:'exit_to_app', class: '' },
   { path: '/newsletter', title: 'Newsletter',  icon:'email', class: '' },
   { path: '/blog', title: 'Post to the Blog',  icon:'theaters', class: '' },
-  { path: '/news', title: 'Post to the Blog',  icon:'notifications', class: '' },
+  { path: '/news', title: 'Post to the News',  icon:'notifications', class: '' },
 ];
 
 @Component({

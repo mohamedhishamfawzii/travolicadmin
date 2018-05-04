@@ -10,12 +10,13 @@ export  class BackendService {
   newsId;
   blogId;
   success;
+  url='http://167.99.42.100/' ;
 
   constructor(private http: Http) {
   }
 
   getSearches(): Promise<any> {
-    const url = `api/status/search_history `;
+    const url = this.url+`api/status/search_history `;
     const hh = new Headers();
     hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
     const options = new RequestOptions({
@@ -28,7 +29,7 @@ export  class BackendService {
   }
 
   getRedirections(): Promise<any> {
-    const url = `api/status/redirection`;
+    const url = this.url+`api/status/redirection`;
     const hh = new Headers();
     hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
     const options = new RequestOptions({
@@ -40,7 +41,7 @@ export  class BackendService {
     });
   }
   getNewsletter(): Promise<any> {
-    const url = `api/status/newsletter`;
+    const url = this.url+`api/status/newsletter`;
     const hh = new Headers();
     hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
     const options = new RequestOptions({
@@ -52,7 +53,7 @@ export  class BackendService {
     });
   }
   getCounters( parameters :string) :Promise<any>{
-    const url = `api/status/getcounters/`+parameters;
+    const url = this.url+`api/status/getcounters/`+parameters;
 
     const hh = new Headers();
     hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
@@ -68,7 +69,7 @@ export  class BackendService {
 
   addArticle(title, body,category): Promise<any> {
 
-const url = `api/models/blog`;
+const url = this.url+`api/models/blog`;
 const hh = new Headers();
 hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
 const options = new RequestOptions({
@@ -90,7 +91,7 @@ return this.http.post(url, sdata,options).toPromise().then(response => {
 
   addNews(title, body): Promise<any> {
 
-const url = `api/models/news`;
+const url = this.url+`api/models/news`;
 const hh = new Headers();
 hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
 const options = new RequestOptions({
@@ -112,7 +113,7 @@ this.success=true;
 }
 sendFileArticle(id: string, files : File[]): void {
   console.log("here posting");
-    const url = `api/img_upload/Blog/`+id;
+    const url = this.url+`api/img_upload/Blog/`+id;
     const hh = new Headers();
     hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
     const options = new RequestOptions({
@@ -129,7 +130,7 @@ sendFileArticle(id: string, files : File[]): void {
     this.http.post(url, formData, options).subscribe();
   }
   sendFileNews(id: string, files : File[]): void {
-      const url = `api/img_upload/News/`+id;
+      const url = this.url+`api/img_upload/News/`+id;
       const hh = new Headers();
       hh.append('x-access-token', 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImNsaWVudEB0cmF2b2xpYy5jb20iLCJuYW1lIjoiVHJhdm9pYyBDbGllbnQgV2ViIEFwcGxpY2F0aW9uIiwiX2lkIjoiNWFhMGZmOTI4MTAwNzg0YjQzYmI4YjNhIiwiaWF0IjoxNTIwNTAwNjU1fQ.Vkqv2KJJDhVRTlts2N_HZViUNQugTn5Hju7hKZB9Dn0');
       const options = new RequestOptions({

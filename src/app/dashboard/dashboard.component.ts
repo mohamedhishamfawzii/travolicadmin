@@ -82,7 +82,7 @@ this.visits = JSON.parse(result._body).response.count ;
       console.log(JSON.parse(result._body));
 this.redirects = JSON.parse(result._body).response.count ;
   });
-  this.backconnector.getCounters('Searches').then((result) => {
+  this.backconnector.getCounters('searches').then((result) => {
     console.log("here");
     console.log(JSON.parse(result._body));
 this.searches = JSON.parse(result._body).response.count ;
